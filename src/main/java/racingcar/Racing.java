@@ -41,6 +41,7 @@ public class Racing {
             for(String car: cars.keySet()) {
                 goOrStop(car);
             }
+            showState();
         }
     }
 
@@ -49,5 +50,16 @@ public class Racing {
         if(randNum >= 4) {
             cars.put(car, cars.get(car) + 1);
         }
+    }
+
+    public void showState() {
+        for(String car: cars.keySet()) {
+            System.out.print(car + " : ");
+            for(int i = 0; i < cars.get(car); i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
