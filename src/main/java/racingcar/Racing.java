@@ -3,6 +3,7 @@ package racingcar;
 import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 
 public class Racing {
     private Map<String, Integer> cars;
@@ -37,7 +38,16 @@ public class Racing {
 
     public void startRacing(int n) {
         for(int i = 0; i < n; i++) {
+            for(String car: cars.keySet()) {
+                goOrStop(car);
+            }
+        }
+    }
 
+    public void goOrStop(String car) {
+        int randNum = pickNumberInRange(0, 9);
+        if(randNum >= 4) {
+            cars.put(car, cars.get(car) + 1);
         }
     }
 }
