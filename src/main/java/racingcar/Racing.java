@@ -9,7 +9,7 @@ public class Racing {
     private Map<String, Integer> cars;
 
     public Racing() {
-        cars = new HashMap<>();
+        cars = new LinkedHashMap<>();
     }
 
     public void runRacing() {
@@ -20,8 +20,9 @@ public class Racing {
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(readLine());
 
-        System.out.println("실행 결과");
+        System.out.println("\n실행 결과");
         startRacing(tryCount);
+        showResult();
     }
 
     public void checkIsProperInput(String input) {
@@ -61,5 +62,28 @@ public class Racing {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void showResult() {
+        List<String> winners = searchWinner();
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
+    }
+
+    public List<String> searchWinner() {
+        int max = -1;
+        List<String> winners = new ArrayList<>();
+
+        for(String car: cars.keySet()) {
+            int currValue = cars.get(car);
+            if(max < currValue) {
+                max = currValue;
+                winners.clear();
+                winners.add(car);
+            }
+            else if(max == currValue) {
+                winners.add(car);
+            }
+        }
+        return winners;
     }
 }
