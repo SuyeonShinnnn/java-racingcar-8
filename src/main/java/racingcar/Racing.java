@@ -1,16 +1,14 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Racing {
-    private List<String> cars;
+    private Map<String, Integer> cars;
 
     public Racing() {
-        cars = new ArrayList<>();
+        cars = new HashMap<>();
     }
 
     public void runRacing() {
@@ -20,6 +18,9 @@ public class Racing {
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int tryCount = Integer.parseInt(readLine());
+
+        System.out.println("실행 결과");
+        startRacing(tryCount);
     }
 
     public void checkIsProperInput(String input) {
@@ -30,7 +31,13 @@ public class Racing {
             if (!curr.matches("^[a-zA-Z]+$")) {
                 throw new IllegalArgumentException("자동차 이름은 영문자만 가능합니다.");
             }
-            cars.add(curr);
+            cars.put(curr, 0);
+        }
+    }
+
+    public void startRacing(int n) {
+        for(int i = 0; i < n; i++) {
+
         }
     }
 }
