@@ -26,6 +26,7 @@ public class Racing {
             showResult();
         } catch (Exception e) {
             ExceptionHandler.handle(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -66,7 +67,8 @@ public class Racing {
     }
 
     public void showResult() {
-        int max = Collections.max(cars.values());;
+        int max = Collections.max(cars.values());
+
         List<String> winners = cars.entrySet().stream()
                 .filter(e -> e.getValue() == max)
                 .map(Map.Entry::getKey)
