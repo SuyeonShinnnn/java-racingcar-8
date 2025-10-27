@@ -22,7 +22,7 @@ public class Racing {
             int tryCount = Integer.parseInt(readLine());
 
             System.out.println("\n실행 결과");
-            startRacing(tryCount);
+            startGame(tryCount);
             showResult();
         } catch (Exception e) {
             ExceptionHandler.handle(e);
@@ -41,7 +41,7 @@ public class Racing {
         }
     }
 
-    public void startRacing(int n) {
+    public void startGame(int n) {
         for(int i = 0; i < n; i++) {
             for(String car: cars.keySet()) {
                 moveCarIfPossible(car);
