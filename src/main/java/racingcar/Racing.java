@@ -20,6 +20,7 @@ public class Racing {
 
             System.out.println("시도할 횟수는 몇 회인가요?");
             int tryCount = Integer.parseInt(readLine());
+            validateTryCount(tryCount);
 
             System.out.println("\n실행 결과");
             startGame(tryCount);
@@ -39,6 +40,12 @@ public class Racing {
                 throw new IllegalArgumentException(ErrorMessage.NAME_NOT_ALPHABET.getMessage());
             }
             cars.put(curr, 0);
+        }
+    }
+
+    public void validateTryCount(int tryCount) {
+        if(tryCount <= 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_TRY_COUNT_INPUT.getMessage());
         }
     }
 
